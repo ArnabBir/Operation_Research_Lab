@@ -46,9 +46,9 @@ int main(){
  
 	}while(key == 1);
 	
-	printf("Solution:\n");
+	printf("Solution:\n\n");
 	for(i = 0; i < n; ++i)
-		printf("x_%d = %lf\t", i, x[i]);
+		printf("x_%d = %lf\t", i+1, x[i]);
  	printf("\n");
 	return 0;
 }
