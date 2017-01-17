@@ -111,52 +111,15 @@ double * gaussElimination(int m, int n, double a[m][n], double b[m], int itr){
 	}
 
 	for(i = 0; i < m; ++i){
+		if(!M[i][i]){
+			printf("No Solution\n");
+			return NULL;
+		} 
 		N[combos[itr][i]] /= M[i][i];
 		M[i][i] = 1;
 	}
 
 	return N;
-}
-
-double * gaussSeidel( int m, int n, double a[m][n], double b[m], double er, int itr){
-	int key, i, j;
-	double x0[n], sum;
-	double * x = (double *) malloc(n * sizeof(double));
-	double M[m][m];
-	double N[m];
-	for(i = 0; i < n; ++i){
-			x0[i] = 0;
-			x[i] = 0;
-	}
-
-	for(i = 0; i < m; ++i){
-		N[i] = b[i];
-		for(j = 0; j < m; ++j){
-			M[i][j] = a[i][combos[itr][j]];
-		}
-	}
-
-    makeDominant(m, M, N);
-
-	do{
-		key = 0;
-
-		for(i = 0; i < m; ++i){
-			sum = N[i];
-			for(j = 0; j < m; ++j)
-				if(j != i)
-					sum -= M[i][j] * x0[combos[itr][j]];
-
-			x[combos[itr][i]] = sum / M[i][i];
-			if(fabs((x[combos[itr][i]] - x0[combos[itr][i]]) / x[combos[itr][i]]) > er){
-				key = 1;
-				x0[combos[itr][i]] = x[combos[itr][i]];
-			}
-		}
-
-	}while(key == 1);
-
-	return x;
 }
 
 void concatCombination(int arr[], int data[], int start, int end,
@@ -214,12 +177,16 @@ int main(){
 	double * x[solCount];
 	printf("Solutions:\n\n");
 
+	count = 0;
+
 	for(j = 0; j < solCount; ++j){
 		printf("Solution %d:\n", j+1);
 		x[j] = gaussElimination(m, n, a, b, j);
+		if(x[j] == NULL) continue;
         for(i = 0; i < n; ++i)
             printf("x_%d = %lf\t", i+1, x[j][i]);
         printf("\n\n");
+        ++count;
 	}
 	printf("Total number of basic soultions = %d\n\n", count);
 
