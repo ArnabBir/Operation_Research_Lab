@@ -148,8 +148,8 @@ void getCombination(int arr[], int n, int r)
 }
 
 int main(){
-	int i, j, n, m, choice;
-
+	int i, j, n, m, choice, maxindex;
+	double maximum, summation;
 	printf("Enter the dimension of the matrix (m x n):\n");
 	scanf("%d%d", &m, &n);
 
@@ -264,5 +264,34 @@ int main(){
 				printf("Wrong input... Try again.");
 		}
 	}while(choice != 5);
+	printf("LPP:\n\nEnter the coefficeients of the objective function:\n");
+	double c[n];
+	for(i = 0; i < n; ++i)	scanf("%lf", &c[i]);
+	maximum = 0;
+	maxindex = -1;
+	for(j = 0; j < solCount; ++j){
+		if(isFeasible[j]){
+			summation = 0;
+			for(i = 0; i < n; ++i){
+				summation += c[i] * x[j][i];
+			}
+			if(summation > maximum){
+				maximum = summation;
+				maxindex = j;
+			}
+		}
+	}
+	if(maxindex == -1)	printf("No optimal solution\n");
+	else{
+		printf("Maximum value:\t%lf\n", maximum);
+		printf("Point:\n");
+		printf("(");
+		for(i = 0; i < n; ++i){
+			printf("\t%lf", x[maxindex][i]);
+		}
+		printf(")");
+		printf("\n");
+	}
+
 	return 0;
 }
