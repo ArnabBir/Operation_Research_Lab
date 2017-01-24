@@ -174,7 +174,7 @@ void simplex(int m, int n, double a[m][n+m], double b[m]){
 		ratio[i] = b[i] / a[minindex][i];
 	}
 	min_ratio_index = minIndex(ratio, m);
-	isBasic[min_ratio_index] = 
+	
 }
 
 int main(){
