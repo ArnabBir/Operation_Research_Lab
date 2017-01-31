@@ -108,9 +108,7 @@ int main(){
 			scanf("%lf",&mat[i][j]);
 		}
 		scanf("%s", inequality);
-		if (inequality[0] == '<'){
-			scanf("%lf", &mat[i][n+j]);
-		}
+		scanf("%lf", &mat[i][n+m]);
 	}
 	for(i = 0; i < m; ++i)	mat[i][n+i] = 1;
 
