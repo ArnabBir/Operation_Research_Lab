@@ -142,7 +142,7 @@ int main(){
 		for(i = 0; i < n; ++i)	printf("x_%d* = %lf\t", i+1, x[i]);
 
 	}	
-	printf("\nThe Maximum value of Z is %f \n", mat[m][n]);
+	printf("\nThe optimal value of Z is %f \n", mat[m][n]);
 	printf("-------------------------------------------------------\n");
 	return 0;
 }
