@@ -123,8 +123,8 @@ void Simplex_Optimisation(){
 				for(i = 0; i < n; ++i)	printf("x_%d* = %lf\t", i+1, x[i]);			
 			}	printf("\n");
 		}
-		else if(choice == 4){
-			for(i = m + surplus;  i < n; ++i){
+		else if(choice == 3){
+			for(i = m + surplus; i < n; ++i){
 				table_no++;
 				printf("Solution no. %d:\n" table_no);
 				double x_3[n];
@@ -235,6 +235,7 @@ int main(){
 			break;
 		case 4:
 			Simplex_Optimisation();
+			
 			break;
 		case 5:
 			
