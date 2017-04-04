@@ -220,9 +220,7 @@ int main()
 			float f = 1.0*dualtemp[eqn][j]/dualtemp[pivot][j];
 			if(fabs(f) < minp){minp = fabs(f);minpos = j;cout << "Minpos selected as: " << j << endl;}
 		}
-
 		float p = dualtemp[pivot][minpos];
-
 		for(int i=0;i<=eqn;i++)
 			{
 				for(int j=0;j<=in_var;j++)
