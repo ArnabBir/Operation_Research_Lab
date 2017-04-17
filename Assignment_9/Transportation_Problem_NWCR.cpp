@@ -36,6 +36,21 @@ double getCost(){
 	return cost;
 }
 
+void checkOptimal(){
+	bool isOpt = true;
+	for(int i = 0; i < m; ++i){
+		for(int j = 0; j < n; ++j){
+			if(s[i] + d[j] > val[i][j]){
+				isOpt = false;
+				break;
+			}
+		}
+		if(!isOpt)	break;
+	}
+	if(isOpt)	cout<<"The solution is optimal.\n"<<endl;
+	else	cout<<"The solution is not optimal.\n"<<endl;
+}
+
 int main(){
 	cout<<"Enter the number of Sources:"<<endl;
 	cin>>m;
@@ -61,6 +76,7 @@ int main(){
 
 	TransportOptimize();
 	cout<<"Total cost in NCWR method:\t"<<getCost()<<endl;
+	checkOptimal();
 
 	return 0;
 }
